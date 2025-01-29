@@ -1,0 +1,139 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: parkinsans;
+}
+
+form {
+  display: none;
+  grid-template-columns: 1fr;
+  background-color: rgba(0, 0, 128, 0.247);
+  margin: 5%;
+  border-radius: 16px;
+  padding: 5%;
+  border: 10px solid navy;
+  gap: 50px;
+  height: 100%;
+  align-items: center;
+}
+form h1 {
+  place-self: center;
+  color: navy;
+}
+
+form input[type="text"],
+input[type="number"] {
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid navy;
+  padding: 6px;
+  font-size: 20px;
+  background-color: rgb(255, 255, 255);
+  color: navy;
+}
+
+button[type="submit"] {
+  padding: 10px;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  background-color: navy;
+  color: #45ff0c;
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  transform: scale(1.01);
+}
+
+#fish-type-buttons {
+  place-self: center;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+#fish-type-buttons button {
+  padding: 8px;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid navy;
+  letter-spacing: 1px;
+  font-size: 20px;
+  cursor: pointer;
+  color: navy;
+}
+
+#fish-type-buttons button:hover {
+  background-color: navy;
+  color: white;
+}
+
+.fish-type-btn {
+  background-color: white;
+  font-weight: 600;
+}
+.fish-type-btn.selected {
+  background-color: navy;
+  color: rgb(255, 255, 255);
+}
+
+.radioDiv span {
+  font-weight: 700;
+}
+
+form h1 {
+  letter-spacing: 3px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  padding: 20px;
+  background-color: #45ff0c;
+}
+
+.header div {
+  grid-column: 2 / 3;
+  width: 100%;
+  font-size: 40px;
+}
+
+.header img {
+  width: 60px;
+  grid-column: 1 / 2;
+  grid-row: 1;
+  cursor: pointer;
+}
+
+#content {
+  background-color: navy;
+  position: relative;
+}
+
+#dropdownDiv {
+  background-color: rgba(0, 0, 128, 0.637);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px;
+  place-items: center;
+  color: white;
+  position: absolute;
+  width: 100%;
+}
+
+#dropdownDiv div {
+  cursor: pointer;
+}
+
+.addButton,
+.userButton,
+.account {
+  cursor: pointer;
+}
