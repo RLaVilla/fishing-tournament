@@ -1,12 +1,32 @@
 import dropImg from "./images/dropdown.svg";
+import arrowImg from "./images/arrow.svg";
+
 import { showDropdown } from "./dropdown";
+import { participants } from "./participants";
+import { showParticipantCatches } from "./catches";
 
 export function toggleDropdown() {
   showDropdown();
 }
 
 export function populateHome() {
+  document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".fish-type-btn");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", function () {
+        buttons.forEach((btn) => btn.classList.remove("selected"));
+
+        this.classList.add("selected");
+
+        const fishType = this.getAttribute("data-value");
+        document.getElementById("fish-type").value = fishType;
+      });
+    });
+  });
+
   const contentDiv = document.getElementById("content");
+  contentDiv.innerHTML = "";
 
   const dropDown = document.createElement("img");
   dropDown.src = dropImg;
@@ -16,13 +36,52 @@ export function populateHome() {
 
   const header = document.createElement("div");
   header.classList.add("header");
-  header.textContent = "Tourament Leaderboard";
 
   const label = document.createElement("div");
   label.classList.add("label");
+  label.textContent = "Mity Might Tournament Leaderboard";
 
   header.appendChild(dropDown);
   header.appendChild(label);
 
   contentDiv.appendChild(header);
+
+  const leaderboardDiv = document.createElement("div");
+  leaderboardDiv.classList.add("leaderboardDiv");
+  leaderboardDiv.id = "leaderboard";
+
+  const sortedParticipants = Object.keys(participants).sort((a, b) => {
+    return participants[b].totalLength - participants[a].totalLength;
+  });
+
+  leaderboardDiv.innerHTML = "";
+
+  sortedParticipants.forEach((name) => {
+    const participantDiv = document.createElement("div");
+    participantDiv.classList.add("participant");
+
+    const participantName = document.createElement("p");
+    participantName.textContent = `${name}:`;
+    participantName.classList.add("name");
+
+    const participantLength = document.createElement("p");
+    participantLength.textContent = `${participants[name].totalLength} inches`;
+    participantLength.classList.add("length");
+
+    const participantArrow = document.createElement("img");
+    participantArrow.src = arrowImg;
+    participantArrow.classList.add("arrowImg");
+
+    participantArrow.addEventListener("click", () =>
+      showParticipantCatches(name)
+    );
+
+    console.log(participants);
+
+    participantDiv.appendChild(participantName);
+    participantDiv.appendChild(participantLength);
+    participantDiv.appendChild(participantArrow);
+    leaderboardDiv.appendChild(participantDiv);
+    contentDiv.appendChild(leaderboardDiv);
+  });
 }

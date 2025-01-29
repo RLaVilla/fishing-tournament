@@ -11,11 +11,31 @@
       href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="content"></div>
     <form id="fishing-form" enctype="multipart/form-data">
+      <button type="button" id="close-form-btn" class="close-btn">
+        &times;
+      </button>
       <h1>What'd ya catch?</h1>
+      <div class="textInput">
+        <label for="name">Name:</label>
+        <select id="name" name="name" required>
+          <option value="" disabled selected>Select</option>
+          <option value="Donny">Donny</option>
+          <option value="Chris">Chris</option>
+          <option value="Braden">Braden</option>
+          <option value="Josh">Josh</option>
+          <option value="Kevin">Kevin</option>
+          <option value="Pat">Pat</option>
+          <option value="Rob">Rob</option>
+        </select>
+      </div>
       <div class="textInput">
         <label for="species-name">Species Name:</label>
         <input type="text" id="species-name" name="species-name" required />

@@ -1,8 +1,11 @@
 import "./style.css";
 import { populateHome } from "./home";
+import { toggleDropdown } from "./home";
+import { participants } from "./participants";
 window.onload = populateHome();
 
 export function showForm() {
+  const dropdownButton = document.getElementById("dropdownButton");
   const form = document.getElementById("fishing-form");
   form.style.display = "grid";
   form.addEventListener("submit", function (event) {
@@ -12,33 +15,43 @@ export function showForm() {
     const fishType = document.getElementById("fish-type").value;
     const length = document.getElementById("length").value;
     const image = document.getElementById("fish-image").files[0];
+    const name = document.getElementById("name").value;
 
     if (speciesName && fishType && length && image) {
-      document.getElementById("confirmation").innerHTML = `
-            <h3>Entry Submitted!</h3>
-            <p>Species: ${speciesName}</p>
-            <p>Type: ${fishType}</p>
-            <p>Length: ${length} inches</p>
-            <p>Image: <img src="${URL.createObjectURL(image)}" alt="${speciesName}" width="200"></p>
-          `;
-    } else {
-      document.getElementById("confirmation").innerHTML =
-        "<p>Please fill out all fields.</p>";
+      const fishEntry = {
+        species: speciesName,
+        type: fishType,
+        length: parseInt(length),
+        imageUrl: URL.createObjectURL(image),
+      };
+
+      console.log(fishEntry);
+
+      participants[name].catches.push(fishEntry);
+
+      participants[name].totalLength += parseInt(length);
+
+      form.reset();
+      document.getElementById("fish-type").value = ""; // Reset hidden input
+      document
+        .querySelectorAll(".fish-type-btn")
+        .forEach((btn) => btn.classList.remove("selected"));
+
+      form.style.display = "none";
+
+
+      populateHome();
     }
   });
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll(".fish-type-btn");
-
-    buttons.forEach((button) => {
-      button.addEventListener("click", function () {
-        buttons.forEach((btn) => btn.classList.remove("selected"));
-
-        this.classList.add("selected");
-
-        const fishType = this.getAttribute("data-value");
-        document.getElementById("fish-type").value = fishType;
-      });
+  document
+    .getElementById("close-form-btn")
+    .addEventListener("click", function () {
+      form.style.display = "none";
+      dropdownButton.addEventListener("click", toggleDropdown);
+      form.reset();
+      document.getElementById("fish-type").value = "";
+      const buttons = document.querySelectorAll(".fish-type-btn");
+      buttons.forEach((btn) => btn.classList.remove("selected"));
     });
-  });
 }
