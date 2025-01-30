@@ -54,7 +54,7 @@ export function showForm() {
         darkDiv.style.display = "none";
 
         populateHome();
-
+        window.scrollTo({ top: 0, behavior: "smooth" });
         isSubmitting = false;
       });
     }
