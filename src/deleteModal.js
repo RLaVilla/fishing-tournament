@@ -18,6 +18,7 @@ export function showConfirmationModal(fishCatch, index, name) {
     modal.style.display = "none";
 
     showParticipantCatches(name);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   cancelButton.onclick = () => {
