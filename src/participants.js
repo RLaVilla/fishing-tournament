@@ -1,26 +1,7 @@
 export let participants = {
   Donny: {
-    totalLength: 72,
-    catches: [
-      {
-        species: "Striped Bass",
-        length: 28,
-        fishType: "saltwater",
-        imageUrl: "https://via.placeholder.com/150",
-      },
-      {
-        species: "Bluefish",
-        length: 28,
-        fishType: "saltwater",
-        imageUrl: "https://via.placeholder.com/150",
-      },
-      {
-        species: "Largemouth Bass",
-        length: 16,
-        fishType: "freshwater",
-        imageUrl: "google.com",
-      },
-    ],
+    totalLength: 0,
+    catches: [],
   },
   Chris: {
     totalLength: 0,

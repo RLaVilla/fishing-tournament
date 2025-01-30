@@ -1,6 +1,7 @@
 import { participants } from "./participants";
 import { populateHome } from "./home";
 import { openModal } from "./imgModal";
+import { showConfirmationModal } from "./deleteModal";
 
 import perchImg from "./images/perch.png";
 import flounderImg from "./images/flounder.png";
@@ -94,7 +95,7 @@ export function showParticipantCatches(name) {
     const metricDiv = document.createElement("div");
     metricDiv.classList.add("metricDiv");
 
-    metricDiv.appendChild(name);
+    metricDiv.appendChild(speciesName);
     metricDiv.appendChild(length);
 
     const deleteButton = document.createElement("button");
@@ -102,18 +103,21 @@ export function showParticipantCatches(name) {
     deleteButton.classList.add("deleteButton");
 
     deleteButton.addEventListener("click", () => {
-      catches.splice(index, 1);
-      contentDiv.removeChild(catchDiv);
-      participants[name].totalLength -= fishCatch.length;
+      showConfirmationModal(fishCatch, index, name);
     });
 
     catchDiv.appendChild(img);
     catchDiv.appendChild(metricDiv);
     catchDiv.appendChild(deleteButton);
-    if (fishCatch.fishType === "saltwater") {
+    console.log(fishCatch.type);
+    if (fishCatch.type === "saltwater") {
       saltDiv.appendChild(catchDiv);
     } else {
       freshDiv.appendChild(catchDiv);
     }
+
+    deleteButton.addEventListener("click", () => {
+      showConfirmationModal(fishCatch, index, name);
+    });
   });
 }

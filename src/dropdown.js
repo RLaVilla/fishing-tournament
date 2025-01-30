@@ -17,10 +17,14 @@ export function showDropdown() {
   }
 
   if (isDropdownOpen) {
+    dropdownDiv.classList.remove("show");
     dropdownDiv.style.display = "none";
     isDropdownOpen = false;
   } else {
     dropdownDiv.style.display = "grid";
+    setTimeout(() => {
+      dropdownDiv.classList.add("show");
+    }, 10);
     dropdownDiv.innerHTML = "";
 
     const addButton = document.createElement("p");

@@ -1,5 +1,9 @@
 import dropImg from "./images/dropdown.svg";
 import arrowImg from "./images/arrow.svg";
+import oneImg from "./images/one.svg";
+import twoImg from "./images/two.svg";
+import threeImg from "./images/three.svg";
+import sadImg from "./images/sad.svg";
 
 import { showDropdown } from "./dropdown";
 import { participants } from "./participants";
@@ -56,7 +60,7 @@ export function populateHome() {
 
   leaderboardDiv.innerHTML = "";
 
-  sortedParticipants.forEach((name) => {
+  sortedParticipants.forEach((name, index) => {
     const participantDiv = document.createElement("div");
     participantDiv.classList.add("participant");
 
@@ -76,8 +80,27 @@ export function populateHome() {
       showParticipantCatches(name)
     );
 
-    console.log(participants);
+    let rankImg;
+    switch (index) {
+      case 0:
+        rankImg = oneImg;
+        break;
+      case 1:
+        rankImg = twoImg;
+        break;
+      case 2:
+        rankImg = threeImg;
+        break;
 
+      default:
+        rankImg = sadImg;
+    }
+
+    const rankImage = document.createElement("img");
+    rankImage.src = rankImg;
+    rankImage.classList.add("rankImage");
+
+    participantDiv.appendChild(rankImage);
     participantDiv.appendChild(participantName);
     participantDiv.appendChild(participantLength);
     participantDiv.appendChild(participantArrow);
