@@ -8,16 +8,32 @@
 form {
   display: none;
   grid-template-columns: 1fr;
-  background-color: rgba(0, 0, 128, 0.247);
-  margin: 5%;
+  background-color: white;
   border-radius: 16px;
   padding: 5%;
   border: 10px solid navy;
-  gap: 50px;
-  height: 100%;
+  gap: 40px;
   align-items: center;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  color: black;
 }
+
+#darkDiv {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.767);
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+}
+
 form h1 {
   place-self: center;
   color: navy;
@@ -92,8 +108,8 @@ form h1 {
 
 .close-btn {
   position: absolute;
-  top: -4px;
-  right: 10px;
+  top: -6px;
+  right: 8px;
   background: none;
   border: none;
   font-size: 40px;
@@ -174,6 +190,7 @@ form h1 {
 
 .length {
   font-weight: 450;
+  place-self: center;
 }
 
 .name {
@@ -182,9 +199,10 @@ form h1 {
 
 .arrowImg {
   grid-column: 3 / 4;
-  place-self: end;
   width: 40px;
   cursor: pointer;
+  place-self: end;
+  align-self: center;
 }
 
 .leaderboardDiv {
@@ -227,7 +245,7 @@ form h1 {
 
 .catchDiv {
   display: grid;
-  grid-template-rows: 3fr 1fr 1fr;
+  grid-template-rows: 3fr 1fr;
   grid-template-columns: 1fr;
   place-items: center;
   grid-auto-flow: row;
@@ -235,17 +253,26 @@ form h1 {
   padding: 30px 0;
   border: 2px solid navy;
   margin: 10px;
+  position: relative;
+  max-height: 700px;
+  row-gap: 10px;
 }
 
 .catchImg {
   grid-row: 1 / 2;
   grid-column: 1 / 3;
+  max-width: 100%;
+  max-height: 500px;
   width: 300px;
-  height: auto;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .catchLength {
-  grid-row: 3 / 4;
+  grid-row: 2 / 3;
   grid-column: 1 / 3;
   font-family: smooch sans;
   font-size: 60px;
@@ -254,12 +281,20 @@ form h1 {
 }
 
 .catchName {
-  grid-row: 2 / 3;
+  grid-row: 1 / 2;
   grid-column: 1 / 3;
   font-size: 50px;
   font-family: smooch sans;
   letter-spacing: 4px;
   font-weight: 500;
+}
+
+.metricDiv {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  place-items: center;
+  grid-row: 2 / 3;
+  grid-column: 1 / 3;
 }
 
 .headerCatchesDiv {
@@ -295,4 +330,64 @@ form h1 {
 .totalLength span {
   font-weight: 800;
   font-family: smooch sans;
+}
+
+.deleteButton {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: none;
+  border-radius: 7px;
+  border-bottom-right-radius: 0;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 17px;
+  cursor: pointer;
+  background-color: navy;
+  color: white;
+}
+
+.deleteButton:hover {
+  color: red;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  margin: auto;
+  display: block;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  right: 50%;
+  top: 50%;
+}
+
+#close-btn {
+  font-size: 70px;
+  color: rgb(255, 0, 0);
+  right: 16px;
+  transition: 0.1s ease;
+}
+
+#close-btn:hover {
+  transform: scale(1.05);
 }

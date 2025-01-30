@@ -18,6 +18,7 @@
   </head>
   <body>
     <div id="content"></div>
+    <div id="darkDiv"></div>
     <form id="fishing-form" enctype="multipart/form-data">
       <button type="button" id="close-form-btn" class="close-btn">
         &times;
@@ -79,6 +80,10 @@
 
       <button type="submit">Log Catch</button>
     </form>
-    <div id="confirmation"></div>
+    <div id="imageModal" class="modal">
+      <span id="close-btn" class="close-btn">&times;</span>
+      <img class="modal-content" id="modalImage" />
+      <div id="caption"></div>
+    </div>
   </body>
 </html>

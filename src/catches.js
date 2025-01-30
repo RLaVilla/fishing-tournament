@@ -1,9 +1,10 @@
 import { participants } from "./participants";
+import { populateHome } from "./home";
+import { openModal } from "./imgModal";
 
 import perchImg from "./images/perch.png";
 import flounderImg from "./images/flounder.png";
 import back from "./images/backArrow.svg";
-import { populateHome } from "./home";
 
 export function showParticipantCatches(name) {
   const catches = participants[name].catches;
@@ -71,25 +72,44 @@ export function showParticipantCatches(name) {
   contentDiv.appendChild(saltDiv);
   contentDiv.appendChild(freshDiv);
 
-  catches.forEach((fishCatch) => {
+  catches.forEach((fishCatch, index) => {
     const catchDiv = document.createElement("div");
     catchDiv.classList.add("catchDiv");
 
     const img = document.createElement("img");
     img.src = fishCatch.imageUrl;
+    img.alt = fishCatch.species;
     img.classList.add("catchImg");
 
-    const name = document.createElement("p");
-    name.textContent = `${fishCatch.species}`;
-    name.classList.add("catchName");
+    img.addEventListener("click", () => openModal(fishCatch.imageUrl));
+
+    const speciesName = document.createElement("p");
+    speciesName.textContent = `${fishCatch.species}`;
+    speciesName.classList.add("catchName");
 
     const length = document.createElement("p");
     length.textContent = `${fishCatch.length} inches`;
     length.classList.add("catchLength");
 
+    const metricDiv = document.createElement("div");
+    metricDiv.classList.add("metricDiv");
+
+    metricDiv.appendChild(name);
+    metricDiv.appendChild(length);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "Remove";
+    deleteButton.classList.add("deleteButton");
+
+    deleteButton.addEventListener("click", () => {
+      catches.splice(index, 1);
+      contentDiv.removeChild(catchDiv);
+      participants[name].totalLength -= fishCatch.length;
+    });
+
     catchDiv.appendChild(img);
-    catchDiv.appendChild(name);
-    catchDiv.appendChild(length);
+    catchDiv.appendChild(metricDiv);
+    catchDiv.appendChild(deleteButton);
     if (fishCatch.fishType === "saltwater") {
       saltDiv.appendChild(catchDiv);
     } else {
