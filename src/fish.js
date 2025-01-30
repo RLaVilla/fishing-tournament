@@ -60,6 +60,12 @@ export function showForm() {
     }
   }
 
+  document.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("blur", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
   document
     .getElementById("close-form-btn")
     .addEventListener("click", function () {
