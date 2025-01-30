@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fishermen's Source Tournament</title>
+    <link rel="stylesheet" href="b471ecf87e58a0043089.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  <script defer src="fishingapp.js"></script></head>
+  <body>
+    <div id="content"></div>
+    <div id="darkDiv"></div>
+    <form id="fishing-form" enctype="multipart/form-data">
+      <button type="button" id="close-form-btn" class="close-btn">
+        &times;
+      </button>
+      <h1>What'd ya catch?</h1>
+      <div class="textInput">
+        <label for="name">Name:</label>
+        <select id="name" name="name" required>
+          <option value="" disabled selected>Select</option>
+          <option value="Donny">Donny</option>
+          <option value="Chris">Chris</option>
+          <option value="Braden">Braden</option>
+          <option value="Josh">Josh</option>
+          <option value="Kevin">Kevin</option>
+          <option value="Pat">Pat</option>
+          <option value="Rob">Rob</option>
+        </select>
+      </div>
+      <div class="textInput">
+        <label for="species-name">Species Name:</label>
+        <input type="text" id="species-name" name="species-name" required />
+      </div>
+      <div id="fish-type-buttons">
+        <button
+          type="button"
+          id="saltwater-btn"
+          class="fish-type-btn"
+          data-value="saltwater"
+        >
+          Saltwater
+        </button>
+        <span>OR</span>
+        <button
+          type="button"
+          id="freshwater-btn"
+          class="fish-type-btn"
+          data-value="freshwater"
+        >
+          Freshwater
+        </button>
+      </div>
+      <div class="textInput">
+        <label for="length">Length (inches):</label>
+        <input type="number" id="length" name="length" required min="1" />
+      </div>
+
+      <div>
+        <label for="fish-image">Upload Fish Image:</label>
+        <input
+          type="file"
+          id="fish-image"
+          name="fish-image"
+          accept="image/*"
+          required
+        />
+      </div>
+
+      <input type="hidden" id="fish-type" name="fish-type" />
+
+      <button type="submit">Log Catch</button>
+    </form>
+    <div id="imageModal" class="modal">
+      <span id="close-btn" class="close-btn">&times;</span>
+      <img class="modal-content" id="modalImage" />
+      <div id="caption"></div>
+    </div>
+    <div id="confirmModal" class="confirmModal">
+      <div class="confirmModal-content">
+        <p id="modalMessage"></p>
+        <div class="modal-actions">
+          <button id="confirmDelete" class="confirm-button">Yes, delete</button>
+          <button id="cancelDelete" class="cancel-button">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
