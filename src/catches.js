@@ -6,6 +6,7 @@ import { showConfirmationModal } from "./deleteModal";
 import perchImg from "./images/perch.png";
 import flounderImg from "./images/flounder.png";
 import back from "./images/backArrow.svg";
+import trashImg from "./images/trash.svg";
 
 export function showParticipantCatches(name) {
   const catches = participants[name].catches;
@@ -98,8 +99,8 @@ export function showParticipantCatches(name) {
     metricDiv.appendChild(speciesName);
     metricDiv.appendChild(length);
 
-    const deleteButton = document.createElement("button");
-    deleteButton.innerHTML = "Remove";
+    const deleteButton = document.createElement("img");
+    deleteButton.src = trashImg;
     deleteButton.classList.add("deleteButton");
 
     deleteButton.addEventListener("click", () => {
