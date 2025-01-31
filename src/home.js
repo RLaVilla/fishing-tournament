@@ -43,12 +43,22 @@ export function populateHome() {
 
   const label = document.createElement("div");
   label.classList.add("label");
-  label.textContent = "Mity Might Tournament Leaderboard";
+  label.textContent = "Mity Might Tournament";
 
   header.appendChild(dropDown);
   header.appendChild(label);
 
   contentDiv.appendChild(header);
+
+  const headerTwo = document.createElement("div");
+  headerTwo.id = "headerTwo";
+
+  const headerTwoTitle = document.createElement("p");
+  headerTwoTitle.textContent = "Leaderboard";
+
+  headerTwo.appendChild(headerTwoTitle);
+
+  contentDiv.appendChild(headerTwo);
 
   const leaderboardDiv = document.createElement("div");
   leaderboardDiv.classList.add("leaderboardDiv");
@@ -107,4 +117,14 @@ export function populateHome() {
     leaderboardDiv.appendChild(participantDiv);
     contentDiv.appendChild(leaderboardDiv);
   });
+
+  const footerDiv = document.createElement("div");
+  footerDiv.classList.add("footerDiv");
+
+  const logo = document.createElement("img");
+  logo.src =
+    "//fishermenssource.com/cdn/shop/files/fishermen_logo_7527e661-f47e-4145-97d8-7bedb99119e3_500x.png?v=1662569298";
+
+  footerDiv.appendChild(logo);
+  contentDiv.appendChild(footerDiv);
 }

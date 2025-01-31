@@ -6,14 +6,14 @@ let isDropdownOpen = false;
 export function showDropdown() {
   const contentDiv = document.getElementById("content");
   const dropdownButton = document.getElementById("dropdownButton");
-  const leaderboard = document.getElementById("leaderboard");
+  const headerTwo = document.getElementById("headerTwo");
 
   let dropdownDiv = document.getElementById("dropdownDiv");
   if (!dropdownDiv) {
     dropdownDiv = document.createElement("div");
     dropdownDiv.style.display = "none";
     dropdownDiv.id = "dropdownDiv";
-    contentDiv.insertBefore(dropdownDiv, leaderboard);
+    contentDiv.insertBefore(dropdownDiv, headerTwo);
   }
 
   if (isDropdownOpen) {
