@@ -1,0 +1,22 @@
+{
+  "Donny": {
+    "totalLength": 50,
+    "catches": [
+      {
+        "species": "Bass",
+        "type": "Saltwater",
+        "length": 50
+      }
+    ]
+  },
+  "Chris": {
+    "totalLength": 30,
+    "catches": [
+      {
+        "species": "Trout",
+        "type": "Freshwater",
+        "length": 30
+      }
+    ]
+  }
+}

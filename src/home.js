@@ -6,14 +6,18 @@ import threeImg from "./images/three.svg";
 import sadImg from "./images/sad.svg";
 
 import { showDropdown } from "./dropdown";
-import { participants } from "./participants";
+// import { participants } from "./participants";
 import { showParticipantCatches } from "./catches";
+
+import { loadParticipants } from "./participants";
 
 export function toggleDropdown() {
   showDropdown();
 }
 
-export function populateHome() {
+export async function populateHome() {
+  const participants = await loadParticipants();
+
   document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelectorAll(".fish-type-btn");
 

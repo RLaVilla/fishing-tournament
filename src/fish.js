@@ -1,13 +1,16 @@
 import "./style.css";
 import { populateHome } from "./home";
 import { toggleDropdown } from "./home";
-import { participants } from "./participants";
+// import { participants } from "./participants";
+import { loadParticipants } from "./participants";
+import { updateParticipants } from "./participants";
 import { compressImage } from "./compress";
 window.onload = populateHome();
 
 let isSubmitting = false;
 
-export function showForm() {
+export async function showForm() {
+  const participants = await loadParticipants();
   const dropdownButton = document.getElementById("dropdownButton");
   const form = document.getElementById("fishing-form");
 
@@ -43,6 +46,7 @@ export function showForm() {
         participants[name].catches.push(fishEntry);
 
         participants[name].totalLength += parseInt(length);
+        updateParticipants(participants);
 
         form.reset();
         document.getElementById("fish-type").value = "";

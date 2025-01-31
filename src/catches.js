@@ -1,4 +1,5 @@
-import { participants } from "./participants";
+// import { participants } from "./participants";
+import { loadParticipants } from "./participants";
 import { populateHome } from "./home";
 import { openModal } from "./imgModal";
 import { showConfirmationModal } from "./deleteModal";
@@ -8,7 +9,9 @@ import flounderImg from "./images/flounder.png";
 import back from "./images/backArrow.svg";
 import trashImg from "./images/trash.svg";
 
-export function showParticipantCatches(name) {
+export async function showParticipantCatches(name) {
+  const participants = await loadParticipants();
+
   const catches = participants[name].catches;
   const contentDiv = document.getElementById("content");
   contentDiv.innerHTML = "";
