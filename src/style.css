@@ -128,7 +128,7 @@ form h1 {
   grid-template-rows: 1fr;
   place-items: center;
   padding: 20px;
-  background-color: #45ff0c;
+  background-color: navy;
   font-size: 30px;
   text-align: center;
   position: relative;
@@ -140,6 +140,7 @@ form h1 {
   font-family: smooch sans;
   font-size: 40px;
   font-weight: 550;
+  color: white;
 }
 
 .header img {
@@ -155,7 +156,7 @@ form h1 {
 #content {
   background-color: navy;
   position: relative;
-  border: 4px solid black;
+  border: 3px solid black;
 }
 
 #dropdownDiv {
@@ -164,14 +165,16 @@ form h1 {
   grid-template-columns: 1fr;
   padding: 10px;
   place-items: center;
-  color: navy;
+  color: white;
   width: 100%;
   font-size: 20px;
-  background-color: rgb(218, 218, 218);
-  font-weight: 600;
+  background-color: rgb(163, 163, 163);
+  font-weight: bold;
+  letter-spacing: 0.5px;
   visibility: hidden;
   opacity: 0;
   transform: translateY(-10px);
+  box-shadow: inset 0 0px 9px rgba(0, 0, 0, 0.8);
 }
 
 #dropdownDiv div {
@@ -194,7 +197,7 @@ form h1 {
 }
 
 .participant {
-  border-bottom: 4px solid rgb(0, 0, 0);
+  border-bottom: 3px solid rgb(0, 0, 0);
   padding: 14px 0;
   color: white;
   font-family: smooch sans;
@@ -238,7 +241,7 @@ form h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 4px solid rgb(0, 0, 0);
+  border-top: 3px solid rgb(0, 0, 0);
 }
 
 .saltDiv,
@@ -554,15 +557,23 @@ form h1 {
 
 @media (max-width: 550px) {
   .header div {
-    font-size: 30px;
+    font-size: 34px;
   }
   .header img {
     width: 50px;
     left: 0px;
+    top: -3px;
+  }
+  .footerDiv img {
+    width: 175px;
   }
 }
 
 @media (max-width: 465px) {
+  .header div {
+    font-size: 30px;
+  }
+
   .header img {
     width: 45px;
     left: -8px;

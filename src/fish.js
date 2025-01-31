@@ -10,7 +10,7 @@ window.onload = populateHome();
 let isSubmitting = false;
 
 export async function showForm() {
-  const participants = await loadParticipants();
+  // const participants = await loadParticipants();
   const dropdownButton = document.getElementById("dropdownButton");
   const form = document.getElementById("fishing-form");
 
@@ -22,7 +22,7 @@ export async function showForm() {
 
   darkDiv.style.display = "block";
   form.style.display = "grid";
-  function handleFormSubmit() {
+  async function handleFormSubmit() {
     event.preventDefault();
 
     if (isSubmitting) return;
@@ -35,7 +35,9 @@ export async function showForm() {
     const name = document.getElementById("name").value;
 
     if (speciesName && fishType && length && image) {
-      compressImage(image, 0.8, (compressedImageUrl) => {
+      const participants = await loadParticipants();
+
+      compressImage(image, 0.8, async (compressedImageUrl) => {
         const fishEntry = {
           species: speciesName,
           type: fishType,
@@ -44,9 +46,9 @@ export async function showForm() {
         };
 
         participants[name].catches.push(fishEntry);
-
         participants[name].totalLength += parseInt(length);
-        updateParticipants(participants);
+
+        await updateParticipants(participants);
 
         form.reset();
         document.getElementById("fish-type").value = "";

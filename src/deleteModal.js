@@ -14,11 +14,11 @@ export async function showConfirmationModal(fishCatch, index, name) {
 
   modal.style.display = "block";
 
-  confirmButton.onclick = () => {
+  confirmButton.onclick = async () => {
     participants[name].catches.splice(index, 1);
     participants[name].totalLength -= fishCatch.length;
 
-    updateParticipants(participants);
+    await updateParticipants(participants);
 
     modal.style.display = "none";
 

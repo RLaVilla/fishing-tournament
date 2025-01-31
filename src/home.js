@@ -40,6 +40,7 @@ export async function populateHome() {
 
   const header = document.createElement("div");
   header.classList.add("header");
+  header.id = "header";
 
   const label = document.createElement("div");
   label.classList.add("label");
