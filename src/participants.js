@@ -1,35 +1,4 @@
-// export let participants = {
-//   Donny: {
-//     totalLength: 0,
-//     catches: [],
-//   },
-//   Chris: {
-//     totalLength: 0,
-//     catches: [],
-//   },
-//   Braden: {
-//     totalLength: 0,
-//     catches: [],
-//   },
-//   Kevin: {
-//     totalLength: 0,
-//     catches: [],
-//   },
-//   Rob: {
-//     totalLength: 0,
-//     catches: [],
-//   },
-//   Pat: {
-//     totalLength: 0,
-//     catches: [],
-//   },
-//   Josh: {
-//     totalLength: 0,
-//     catches: [],
-//   },
-// };
-
-const API_URL = "http://localhost:3000";
+const API_URL = "https://fishing-tournament.onrender.com";
 
 export async function getParticipants() {
   try {
@@ -50,7 +19,7 @@ export async function loadParticipants() {
 
 export async function updateParticipants(participants) {
   try {
-    const response = await fetch("http://localhost:3000/participants", {
+    const response = await fetch(`${API_URL}/participants`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +27,7 @@ export async function updateParticipants(participants) {
       body: JSON.stringify(participants),
     });
     const result = await response.json();
-    console.log(result.message); // "Participants updated!"
+    console.log(result.message);
   } catch (error) {
     console.error("Error updating participants:", error);
   }
