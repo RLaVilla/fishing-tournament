@@ -1,4 +1,3 @@
-// import { participants } from "./participants";
 import { loadParticipants } from "./participants";
 import { populateHome } from "./home";
 import { openModal } from "./imgModal";

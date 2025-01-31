@@ -1,4 +1,3 @@
-// import { participants } from "./participants";
 import { loadParticipants } from "./participants";
 import { updateParticipants } from "./participants";
 import { showParticipantCatches } from "./catches";
@@ -19,7 +18,7 @@ export async function showConfirmationModal(fishCatch, index, name) {
     participants[name].catches.splice(index, 1);
     participants[name].totalLength -= fishCatch.length;
 
-    updateParticipants();
+    updateParticipants(participants);
 
     modal.style.display = "none";
 

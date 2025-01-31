@@ -1,7 +1,7 @@
 import "./style.css";
 import { populateHome } from "./home";
 import { toggleDropdown } from "./home";
-// import { participants } from "./participants";
+
 import { loadParticipants } from "./participants";
 import { updateParticipants } from "./participants";
 import { compressImage } from "./compress";

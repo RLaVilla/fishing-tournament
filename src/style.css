@@ -12,7 +12,7 @@ form {
   border-radius: 16px;
   padding: 5%;
   border: 10px solid navy;
-  gap: 40px;
+  gap: 30px;
   align-items: center;
   position: absolute;
   top: 50%;
@@ -92,6 +92,7 @@ button[type="submit"]:hover {
 .fish-type-btn {
   font-weight: 600;
   color: navy;
+  background-color: white;
 }
 .fish-type-btn.selected {
   background-color: navy;

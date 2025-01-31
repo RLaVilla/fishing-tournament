@@ -6,9 +6,7 @@ import threeImg from "./images/three.svg";
 import sadImg from "./images/sad.svg";
 
 import { showDropdown } from "./dropdown";
-// import { participants } from "./participants";
 import { showParticipantCatches } from "./catches";
-
 import { loadParticipants } from "./participants";
 
 export function toggleDropdown() {
@@ -18,18 +16,16 @@ export function toggleDropdown() {
 export async function populateHome() {
   const participants = await loadParticipants();
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll(".fish-type-btn");
+  const buttons = document.querySelectorAll(".fish-type-btn");
 
-    buttons.forEach((button) => {
-      button.addEventListener("click", function () {
-        buttons.forEach((btn) => btn.classList.remove("selected"));
+  buttons.forEach((button) => {
+    button.addEventListener("click", function () {
+      buttons.forEach((btn) => btn.classList.remove("selected"));
 
-        this.classList.add("selected");
+      this.classList.add("selected");
 
-        const fishType = this.getAttribute("data-value");
-        document.getElementById("fish-type").value = fishType;
-      });
+      const fishType = this.getAttribute("data-value");
+      document.getElementById("fish-type").value = fishType;
     });
   });
 
