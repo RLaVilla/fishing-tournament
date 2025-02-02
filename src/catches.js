@@ -81,7 +81,7 @@ export async function showParticipantCatches(name) {
     catchDiv.classList.add("catchDiv");
 
     const img = document.createElement("img");
-    img.src = fishCatch.imageUrl;
+    img.src = `https://fishing-tournament.onrender.com${fishCatch.imageUrl}`;
     img.alt = fishCatch.species;
     img.classList.add("catchImg");
 

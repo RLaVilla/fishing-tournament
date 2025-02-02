@@ -37,12 +37,12 @@ export async function showForm() {
     if (speciesName && fishType && length && image) {
       const participants = await loadParticipants();
 
-      compressImage(image, 0.8, async (compressedImageUrl) => {
+      compressImage(image, 0.8, async (imageUrl) => {
         const fishEntry = {
           species: speciesName,
           type: fishType,
           length: parseInt(length),
-          imageUrl: compressedImageUrl,
+          imageUrl: imageUrl,
         };
 
         participants[name].catches.push(fishEntry);

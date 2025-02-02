@@ -7,7 +7,7 @@ export function compressImage(file, quality, callback) {
       toType: "image/jpeg",
       quality: quality,
     }).then((convertedBlob) => {
-      processImage(convertedBlob, quality, callback);
+      uploadImageToServer(convertedBlob, callback);
     });
   } else {
     processImage(file, quality, callback);
@@ -31,8 +31,7 @@ function processImage(file, quality, callback) {
 
       canvas.toBlob(
         (blob) => {
-          const compressedImageUrl = URL.createObjectURL(blob);
-          callback(compressedImageUrl);
+          uploadImageToServer(blob, callback);
         },
         "image/jpeg",
         quality
@@ -41,4 +40,25 @@ function processImage(file, quality, callback) {
 
     img.src = event.target.result;
   };
+}
+
+async function uploadImageToServer(file, callback) {
+  const formData = new FormData();
+  formData.append("image", file);
+
+  try {
+    const response = await fetch(
+      "https://fishing-tournament.onrender.com/upload-image",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+    const imageUrl = data.imageUrl;
+    callback(imageUrl);
+  } catch (error) {
+    console.error("Error uploading image:", error);
+  }
 }
