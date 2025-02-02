@@ -85,7 +85,7 @@ export async function showParticipantCatches(name) {
     img.alt = fishCatch.species;
     img.classList.add("catchImg");
 
-    img.addEventListener("click", () => openModal(fishCatch.imageUrl));
+    img.addEventListener("click", () => openModal(`https://fishing-tournament.onrender.com${fishCatch.imageUrl}`));
 
     const speciesName = document.createElement("p");
     speciesName.textContent = `${fishCatch.species}`;

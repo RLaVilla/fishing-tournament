@@ -71,16 +71,26 @@ export async function populateHome() {
 
   leaderboardDiv.innerHTML = "";
 
-  sortedParticipants.forEach((name, index) => {
+  let currentPosition = 1;
+  let displayRank = 1;
+  let lastLength = null;
+
+  sortedParticipants.forEach((name) => {
+    const participant = participants[name];
+
     const participantDiv = document.createElement("div");
     participantDiv.classList.add("participant");
+
+    if (lastLength !== null && participant.totalLength !== lastLength) {
+      displayRank = currentPosition;
+    }
 
     const participantName = document.createElement("p");
     participantName.textContent = `${name}:`;
     participantName.classList.add("name");
 
     const participantLength = document.createElement("p");
-    participantLength.textContent = `${participants[name].totalLength} inches`;
+    participantLength.textContent = `${participant.totalLength} inches`;
     participantLength.classList.add("length");
 
     const participantArrow = document.createElement("img");
@@ -91,20 +101,28 @@ export async function populateHome() {
       showParticipantCatches(name)
     );
 
-    let rankImg;
-    switch (index) {
-      case 0:
-        rankImg = oneImg;
-        break;
-      case 1:
-        rankImg = twoImg;
-        break;
-      case 2:
-        rankImg = threeImg;
-        break;
+    lastLength = participant.totalLength;
+    currentPosition++;
 
-      default:
-        rankImg = sadImg;
+    let rankImg;
+
+    if (participant.totalLength === 0) {
+      rankImg = sadImg;
+    } else {
+      switch (displayRank) {
+        case 1:
+          rankImg = oneImg;
+          break;
+        case 2:
+          rankImg = twoImg;
+          break;
+        case 3:
+          rankImg = threeImg;
+          break;
+
+        default:
+          rankImg = sadImg;
+      }
     }
 
     const rankImage = document.createElement("img");
