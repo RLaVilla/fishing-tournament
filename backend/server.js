@@ -54,6 +54,24 @@ app.post("/upload-image", upload.single("image"), (req, res) => {
   res.json({ imageUrl });
 });
 
+app.delete("/delete-image", (req, res) => {
+  const { imageUrl } = req.body;
+
+  if (!imageUrl) {
+    return res.status(400).json({ error: "No image URL provided" });
+  }
+
+  const filePath = path.join(__dirname, imageUrl);
+
+  fs.unlink(filePath, (err) => {
+    if (err) {
+      console.error("Error deleting file:", err);
+      return res.status(500).json({ error: "Failed to delete image" });
+    }
+    res.json({ message: "Image deleted successfully" });
+  });
+});
+
 app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}`)
 );
