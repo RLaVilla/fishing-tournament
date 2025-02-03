@@ -25,6 +25,9 @@ export async function showForm() {
   async function handleFormSubmit() {
     event.preventDefault();
 
+    const loader = document.getElementById("loader");
+    loader.style.display = "block";
+
     if (isSubmitting) return;
     isSubmitting = true;
 

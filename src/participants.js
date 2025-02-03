@@ -18,6 +18,9 @@ export async function loadParticipants() {
 }
 
 export async function updateParticipants(participants) {
+  const loader = document.getElementById("loader");
+  loader.style.display = "block";
+
   try {
     const response = await fetch(`${API_URL}/participants`, {
       method: "POST",
@@ -28,7 +31,9 @@ export async function updateParticipants(participants) {
     });
     const result = await response.json();
     console.log(result.message);
+    loader.style.display = "none";
   } catch (error) {
     console.error("Error updating participants:", error);
+    loader.style.display = "none";
   }
 }
