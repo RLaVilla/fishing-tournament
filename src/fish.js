@@ -27,6 +27,7 @@ export async function showForm() {
 
     const loader = document.getElementById("loader");
     loader.style.display = "block";
+    loader.style.top = "37%";
 
     if (isSubmitting) return;
     isSubmitting = true;

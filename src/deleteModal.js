@@ -9,12 +9,15 @@ export async function showConfirmationModal(fishCatch, index, name) {
   const confirmButton = document.getElementById("confirmDelete");
   const cancelButton = document.getElementById("cancelDelete");
   const modalMessage = document.getElementById("modalMessage");
+  const loader = document.getElementById("loader");
 
   modalMessage.textContent = `Are you sure you want to delete ${name}'s ${fishCatch.species}?`;
 
   modal.style.display = "block";
 
   confirmButton.onclick = async () => {
+    loader.style.display = "block";
+    loader.style.top = "60%";
     const imageUrl = fishCatch.imageUrl;
 
     participants[name].catches.splice(index, 1);
@@ -33,6 +36,7 @@ export async function showConfirmationModal(fishCatch, index, name) {
     }
 
     modal.style.display = "none";
+    loader.style.display = "none";
 
     showParticipantCatches(name);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -40,5 +44,6 @@ export async function showConfirmationModal(fishCatch, index, name) {
 
   cancelButton.onclick = () => {
     modal.style.display = "none";
+    loader.style.display = "none";
   };
 }

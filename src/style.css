@@ -154,7 +154,6 @@ form h1 {
 }
 
 #content {
-  /* background-color: navy; */
   position: relative;
   border: 3px solid black;
 }
@@ -518,8 +517,10 @@ form h1 {
   background: var(--g), var(--g), var(--g);
   background-size: 60px 60px;
   animation: l10 1.5s infinite;
-  left: 31%;
-  top: 35%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 37%;
+  z-index: 11;
 }
 @keyframes l10 {
   0% {
